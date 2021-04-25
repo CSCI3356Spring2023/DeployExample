@@ -38,10 +38,46 @@ heroku apps:create
 
 This action must be done from inside the app source folder so that Heroku can link your source repository to your app.
 
-Make sure you have the following files at the root of your app source folder:
-* `runtime.txt` - Tells Heroku  the version of Python that you need
-* `Procfile` -  Tells Heroku how to start your web app.
-* `requirements.txt` - Tells Heroku what libraries must be installed 
+## Specifying the needed runtime
+
+Make sure you have a file called `runtime.txt` which tells Heroku the version of Python that you need. Here is the example for this application:
+
+```
+python-3.9.4
+```
+
+## Creating a requirements.txt file
+
+You need to create a file called `requirements.txt` that tells Heroku what libraries must be installed. To do that:
+
+```bash
+pip freeze > ./requirements.txt
+```
+
+## Creating a Procfile
+
+As you know, the first time you run your application, you use `python manage.py migrate` to create the models in your SQLite database (just once or every time you change your models) and then, you start your application with `python manage.py runserver` which starts a development web server at port 8080 that watches your changes to your local files as you develop and deploys these changes automatically for you.
+
+You should never use `python manage.py runserver` to deploy an application in production. There are production web servers such as Nginx and gunicorn for that. But to keep things simple, we will deploy in Heroku using runserver. 
+
+In order to do that, create a file named `Procfile` (no extension!) with the following:
+
+```txt
+release: python manage.py migrate
+web: python3 manage.py runserver 0.0.0.0:$PORT
+```
+
+Please notice that we are telling `runserver` to listen on port $PORT instead of 8080. We are doing this because Heroku dynamically assigns a port for us. When you call your application, it uses your URL to define which port to route the request to.
+
+## Commit your changes
+
+Use git to commit your changes:
+
+```bash
+git add .
+git commit -m "Preparing my app for Heroku."
+git push
+```
 
 ## Push your main branch to the heroku origin
 
@@ -50,7 +86,7 @@ The previous command created a new origin in your local clone of the repository 
 Let's now push the source and get the application deployed:
 
 ```bash
-git push heroku main
+git push heroku main0
 ```
 
 After this command, you will see a lot of output like this:
