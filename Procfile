@@ -1,1 +1,1 @@
-web: python3 ./sendmail/manage.py runserver
+web: python3 manage.py runserver
