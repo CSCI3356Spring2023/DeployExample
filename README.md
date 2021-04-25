@@ -76,7 +76,7 @@ When you create an Heroku application with the command `heroku apps:create`, it 
 The problem is that `runserver` will not accept requests that are not comming with the host it recognizes. In order to tell `runserver` which is the random FQDN assigned to your newly created application, open the file `./config/settings.py' and change your ALLOWED_HOSTS to the following:
 
 ```
-ALLOWED_HOSTS = ['*.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','.herokuapp.com',]
 ```
 
 This will tell runserver that it is ok to receive requestes through URLs that end with `herokuapp.com`.
