@@ -58,9 +58,9 @@ pip freeze > ./requirements.txt
 
 As you know, the first time you run your application, you use `python manage.py migrate` to create the models in your SQLite database (just once or every time you change your models) and then, you start your application with `python manage.py runserver` which starts a development web server at port 8080 that watches your changes to your local files as you develop and deploys these changes automatically for you.
 
-You should never use `python manage.py runserver` to deploy an application in production. There are production web servers such as Nginx and gunicorn for that. But to keep things simple, we will deploy in Heroku using runserver. 
+You should never use `python manage.py runserver` to deploy an application in production. There are production web servers such as Nginx and gunicorn for that. But to keep things simple and to count on helpful hints, we will deploy in Heroku using `runserver`. `runserver` will always try to help and tell us what is wrong. A production server will not because this will often mean revealing details about your application that you don't want to reveal to an attacker. But we are learning and happy with the `runserver` can provide us.
 
-In order to do that, create a file named `Procfile` (no extension!) with the following:
+In order to use `runserver`, create a file named `Procfile` (no extension!) with the following:
 
 ```txt
 release: python manage.py migrate
