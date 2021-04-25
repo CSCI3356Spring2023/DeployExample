@@ -98,7 +98,7 @@ The previous command created a new origin in your local clone of the repository 
 Let's now push the source and get the application deployed:
 
 ```bash
-git push heroku main0
+git push heroku main
 ```
 
 After this command, you will see a lot of output like this:
