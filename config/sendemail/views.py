@@ -2,11 +2,10 @@
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .forms import ContactForm
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from .models import ContactForm
-from .forms import UserModelForm
+from .models import ContactsModel
+from .forms import ContactsModelForm
 
 
 def validateEmail( email ):
@@ -26,9 +25,9 @@ def repeatedCorrectly(email1,email2):
             
 def contactView(request):
     if request.method == 'GET':
-        form = ContactForm()
+        form = ContactsModelForm()
     elif request.method == 'POST':
-        form = UserModelForm(request.POST)
+        form = ContactsModelForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             from_email = form.cleaned_data['from_email']
@@ -40,15 +39,14 @@ def contactView(request):
             u = form.save()
             print({'form': form})
 
-
-            
             try:
                 send_mail(subject, message, from_email, ['admin@example.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('success')
     else:
-        form_class = UserModelForm
+        form_class = ContactsModelForm
+    
     return render(request, "email.html", {'form': form})
 
 def successView(request):

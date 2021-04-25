@@ -3,7 +3,7 @@ from django.forms import ModelForm
 
 # Create your models here.
 
-class ContactForm(models.Model):
+class ContactsModel(models.Model):
     from_email = models.EmailField()
     repeat_email = models.EmailField()
     subject = models.CharField(max_length=1024)

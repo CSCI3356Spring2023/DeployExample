@@ -2,19 +2,19 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import ContactForm
+from .models import ContactsModel
 from django.core.exceptions import ValidationError
 
 
-class UserModelForm(ModelForm):
+class ContactsModelForm(ModelForm):
     class Meta:
-        model = ContactForm
+        model = ContactsModel
         fields = ['from_email', 'repeat_email', 'subject', 'message']
 
     #To check if both emails are matching or not
     # and if not yet in DB    
     def clean(self):
-        cleaned_data = super(UserModelForm, self).clean()
+        cleaned_data = super(ContactsModelForm, self).clean()
         email1 = self.cleaned_data.get('from_email')
         email2 = self.cleaned_data.get('repeat_email')
         print('From forms: ', email1,email2)
