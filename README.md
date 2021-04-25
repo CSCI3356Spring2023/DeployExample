@@ -69,6 +69,18 @@ web: python3 manage.py runserver 0.0.0.0:$PORT
 
 Please notice that we are telling `runserver` to listen on port $PORT instead of 8080. We are doing this because Heroku dynamically assigns a port for us. When you call your application, it uses your URL to define which port to route the request to.
 
+## Change your ALLOWED_HOSTS
+
+When you create an Heroku application with the command `heroku apps:create`, it will assign your application a FQDN (fully qualified domain name) that starts with a random prefix such as `blooming-mesa-17823` and ends with `herokuapp.com`. So your full URL will be `https://blooming-mesa-17823.herokuapp.com` (this is just an example).
+
+The problem is that `runserver` will not accept requests that are not comming with the host it recognizes. In order to tell `runserver` which is the random FQDN assigned to your newly created application, open the file `./config/settings.py' and change your ALLOWED_HOSTS to the following:
+
+```
+ALLOWED_HOSTS = ['*.herokuapp.com']
+```
+
+This will tell runserver that it is ok to receive requestes through URLs that end with `herokuapp.com`.
+
 ## Commit your changes
 
 Use git to commit your changes:
