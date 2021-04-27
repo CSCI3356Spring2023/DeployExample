@@ -23,3 +23,11 @@ class ContactsModelForm(ModelForm):
         if email1 and User.objects.filter(email=email1).count():
             raise forms.ValidationError('This email is already in use! Try another email.')
             return email        
+
+
+#Added April 27
+from django.contrib.auth.forms import UserCreationForm
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ("email",)

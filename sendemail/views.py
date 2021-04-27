@@ -7,6 +7,9 @@ from django.core.exceptions import ValidationError
 from .models import ContactsModel
 from .forms import ContactsModelForm
 
+from django.urls import reverse
+from .forms import CustomUserCreationForm
+from django.contrib.auth import login
 
 def validateEmail( email ):
     try:
@@ -15,13 +18,6 @@ def validateEmail( email ):
     except ValidationError:
         return False
 
-def repeatedCorrectly(email1,email2):
-    print(email1,email2)
-    try:
-        if (email1 == email2):
-            return True
-    except ValidationError:
-        return False
             
 def contactView(request):
     if request.method == 'GET':
@@ -34,7 +30,6 @@ def contactView(request):
             validateEmail(from_email)
             repeat_email = form.cleaned_data['repeat_email']
             validateEmail(repeat_email)
-            print(repeatedCorrectly(from_email,repeat_email))
             message = form.cleaned_data['message']
             u = form.save()
             print({'form': form})
@@ -51,3 +46,21 @@ def contactView(request):
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
+
+#Added April 27
+
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+def register(request):
+    if request.method == "GET":
+        return render(
+            request, "register.html",
+            {"form": CustomUserCreationForm}
+        )
+    elif request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(reverse("dashboard"))
