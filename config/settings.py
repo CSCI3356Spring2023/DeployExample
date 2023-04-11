@@ -32,10 +32,10 @@ DEBUG = True
 ALLOWED_HOST = [
     'localhost',
     '127.0.0.1',
-    'web-production-f84fa.up.railway.app'
+    '*.railway.app',
     ]
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-f84fa.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 
 # Application definition
 
