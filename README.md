@@ -1,19 +1,31 @@
 # Deploy_Example
 
-Heroku provides a [good tutorial](https://devcenter.heroku.com/articles/getting-started-with-python#set-up) about how to deploy python applications in their cloud. 
+Railway is one of the current alternatives for free deployment.
+It connects automatically with GitHub and allows easily deployment of apps.
+Read more about here:
+https://docs.railway.app/getting-started
+
+You can read a bit about Django Deployment on Railway here:
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
+
+
 
 This document presents a summary of the steps.
 
-## Make sure you have an account at Heroku
+## Preparing settings.py file
+Open your file called settings.py and be sure that
+DEBUG = False
 
-Go to https://www.heroku.com and signup if you don't have an account yet.
+## Make sure you have an account at Railway
 
-## Installing Heroku CLI
+Go to https://railway.app  and signup if you don't have an account yet.
 
-On your mac:
+## Installing Railway CLI
+
+On your mac (this can take sometime):
 
 ```bash
-brew install heroku/brew/heroku
+brew install railway
 ```
 
 
@@ -22,7 +34,7 @@ brew install heroku/brew/heroku
 Clone this repository:
 
 ```bash
-git clone https://github.com/CSCI3356-Spring2021/Deploy_Example
+git clone git@github.com:CSCI3356Spring2023/DeployExample.git
 cd ./Deploy_Example
 ```
 

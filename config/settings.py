@@ -22,12 +22,20 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ofq4kulg27p_+nv3cuf3d-2u0w=o+&#$(qx1qjpj2-$vy=(wxy'
+# Read secret key from a file
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 #ALLOWED_HOSTS = ['localhost','127.0.0.1','.herokuapp.com',]
-ALLOWED_HOST = ['*']
+ALLOWED_HOST = [
+    'localhost',
+    '127.0.0.1',
+    'web-production-f84fa.up.railway.app'
+    ]
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-f84fa.up.railway.app']
 
 # Application definition
 
@@ -44,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
