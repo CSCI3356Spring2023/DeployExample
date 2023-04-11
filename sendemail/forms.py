@@ -2,14 +2,14 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import ContactsModel
+from .models import ContactsModel, UserType
 from django.core.exceptions import ValidationError
 
 
 class ContactsModelForm(ModelForm):
     class Meta:
         model = ContactsModel
-        fields = ['from_email', 'repeat_email', 'subject', 'message']
+        fields = ['from_email', 'repeat_email', 'user_type', 'subject', 'message']
 
     #To check if both emails are matching or not
     # and if not yet in DB    
@@ -31,3 +31,10 @@ from django.contrib.auth.forms import UserCreationForm
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ("email",)
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+    
+   
