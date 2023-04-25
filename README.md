@@ -139,29 +139,30 @@ https://docs.railway.app/reference/accounts
 
 Connect your Railway account with your GitHub project repo:
 
-railway_image1
+![image](https://user-images.githubusercontent.com/289918/234321635-0ab4fc75-3363-4a97-a7c5-39a84b4a7885.png)
 
 
 Select your project repo:
 
-railway_image2
+![image](https://user-images.githubusercontent.com/289918/234321762-a55aea27-37c0-4cfe-b651-6365d34ae0c8.png)
 
 You will see this, it means that Railway is running everything you said it needs to have to be able to run your project:
 
-railway_image3
+![image](https://user-images.githubusercontent.com/289918/234321844-897452df-5e2c-474a-8712-520e35788a5e.png)
+
 
 When you click on the left "widget" that has your project name, you can see how things are working.
 
-railway_image4
+![image](https://user-images.githubusercontent.com/289918/234321928-ab9961e5-46f8-4473-b10a-c33b7802454b.png)
 
 
 Click on the settings tab (screen below), in the middlle of screen there is an option that says domain. Click on generate domain.
 
-railway_image5
+![image](https://user-images.githubusercontent.com/289918/234321992-dc66cd92-a88a-46da-86d5-0db094555b1c.png)
 
 When you click on generate domain, a web address will appear: 
 
-railway_image6
+![image](https://user-images.githubusercontent.com/289918/234322073-bb8dee18-1ae6-41ee-bbf0-cab8880dfb07.png)
 
 This web address is your project deployed address.
 
@@ -169,4 +170,5 @@ You are done deploying your project.
 
 If you have issues with your deployment, go back to to deployment and click on the buttom that says view logs. This will show you the same logs you can see in your machine and you will have to google the message to try to sort it out the issues you have.
 
-railway_image7
+![image](https://user-images.githubusercontent.com/289918/234322160-e81aa13b-6f15-4786-a160-a389517b80d9.png)
+
