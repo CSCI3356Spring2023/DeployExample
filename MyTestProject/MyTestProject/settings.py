@@ -130,5 +130,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
 CSRF_TRUSTED_ORIGINS = [
-https://web-production-fcfa.up.railway.app,
+'https://deployexample-production.up.railway.app',
 ]
