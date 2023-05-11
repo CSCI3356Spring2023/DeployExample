@@ -47,11 +47,18 @@ Now you must do three things in order to run your application on the Raillway se
 
 ## 3.1. Create your requirements.txt file
 
-Make sure you are on the base of your git repository folder and run the following command:
+Make sure you are on the base of your git repository folder and run the following command (if you are using a Mac/Linux machine):
 
 ```bash
 python3 freeze > ./requirements.txt
 ```
+If you are using a Windows machine you have to use pip or pip3 (if you have multiple Python versions):
+
+```bash
+pip freeze > ./requirements.txt
+```
+
+Be careful, if you didn't create your project as a separate environment in your machine, this may generate a file that has all modules/libraries that you have installed in your computer. And this may bring issues.
 
 ## 3.2. Create your .python-version file
 
@@ -111,6 +118,24 @@ and change it to:
 DEBUG = False
 ```
 
+Look for the line that has:
+
+```bash
+MIDDLEWARE = [
+    ...
+]
+```
+and add the following line above all other middleware lines apart from Django's SecurityMiddleware. It should look like:
+
+```bash
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    ...
+]
+```
+
+
 ## 3.5. Manage statics
 
 Make sure you are on the base of your git repository folder and run the following command to collect our static files into one folder:
@@ -165,6 +190,17 @@ When you click on generate domain, a web address will appear:
 ![image](https://user-images.githubusercontent.com/289918/234322073-bb8dee18-1ae6-41ee-bbf0-cab8880dfb07.png)
 
 This web address is your project deployed address.
+
+Look at the web address that Railway gave you, let's say that mine it was: `https://your-base-domain`,
+
+Go back to the settings file on your project and add the following lines, with the web address that Railway gave to you:
+
+```bash
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://your-base-domain'
+]
+```
 
 You are done deploying your project.
 
